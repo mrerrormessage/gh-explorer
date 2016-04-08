@@ -11,7 +11,10 @@ class ArgumentsSpec extends FunSpec {
       assert(Arguments.parse(Array("-h")) == Help)
     }
     it("should list PRs when 'prs list' are the arguments") {
-      assert(Arguments.parse(Array("prs", "list")) == ListPRs)
+      assert(Arguments.parse(Array("prs", "list", "mrerrormessage/gh-explorer")) == ListPRs("mrerrormessage/gh-explorer"))
+    }
+    it("should print help for 'prs list' when no repo is provided") {
+      assert(Arguments.parse(Array("prs", "list")) == HelpSpecific("prs"))
     }
   }
 }

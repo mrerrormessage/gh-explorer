@@ -6,7 +6,9 @@ object CommandLine extends App {
     case Help  =>
       Console.println("-h: print this message and exit")
       Console.println("prs list: list prs")
-    case ListPRs =>
+    case HelpSpecific(topic) =>
+      Console.println("prs list [REPO]: list prs for repo")
+    case ListPRs(repository) =>
       Console.println("coming soon!")
   }
 }
