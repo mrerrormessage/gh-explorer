@@ -8,7 +8,8 @@ object CommandLine extends App {
       Console.println("prs list: list prs")
     case HelpSpecific(topic) =>
       Console.println("prs list [REPO]: list prs for repo")
-    case ListPRs(repository) =>
-      Console.println("coming soon!")
+    case l@ListPRs(repository) =>
+      val prIds = Interpret(l, GithubClient.runCommand _)
+      Console.println("PRs: " + prIds.mkString(", "))
   }
 }
